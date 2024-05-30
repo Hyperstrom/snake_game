@@ -97,12 +97,12 @@ def gameloop():
     
     big_food_x = random.randint(2*border+36,width-(2*border)-36)
     big_food_y = random.randint(2*border+36,height-(2*border)-36)
-    with open((resource_path(r"C:\Users\anike\OneDrive\Desktop\pygame\resource\highscore.txt")),'r') as f:
+    with open((resource_path(r"resource\highscore.txt")),'r') as f:
         high_score = f.read()
     
     while not exit_game:
         if game_over:
-            with open((resource_path(r"C:\Users\anike\OneDrive\Desktop\pygame\resource\highscore.txt")),'w') as f:
+            with open((resource_path(r"resource\highscore.txt")),'w') as f:
                 f.write(str(high_score))
     
             screen.fill(YELLOW)
@@ -144,7 +144,7 @@ def gameloop():
                 score = score+10
                 food_time = food_time+1
                 # print(food_time)
-                pygame.mixer.music.load(resource_path(r"C:\Users\anike\OneDrive\Desktop\pygame\resource\normal_point_collect.mp3"))
+                pygame.mixer.music.load(resource_path(r"resource\normal_point_collect.mp3"))
                 pygame.mixer.music.play()
                 if score>int(high_score):
                     high_score = score
@@ -165,7 +165,7 @@ def gameloop():
                 if abs(snake_x - big_food_x)<18 and abs(snake_y-big_food_y)<18:
                     score = score+15
                     food_time = food_time+1
-                    pygame.mixer.music.load(resource_path(r"C:\Users\anike\OneDrive\Desktop\pygame\resource\bonus_point.mp3"))
+                    pygame.mixer.music.load(resource_path(r"resource\bonus_point.mp3"))
                     pygame.mixer.music.play()
                     if score>int(high_score):
                         high_score = score
@@ -184,12 +184,12 @@ def gameloop():
             #collision 
             if head in snake_list[:-1]:
                 game_over = True
-                pygame.mixer.music.load(resource_path(r"C:\Users\anike\OneDrive\Desktop\pygame\resource\game_over.mp3"))
+                pygame.mixer.music.load(resource_path(r"resource\game_over.mp3"))
                 pygame.mixer.music.play()
             if snake_x<border or snake_x >width-(border+20) or snake_y<border or snake_y>height-(border+20):
                 # print("Game orver ")
                 game_over = True
-                pygame.mixer.music.load(resource_path(r"C:\Users\anike\OneDrive\Desktop\pygame\resource\game_over.mp3"))
+                pygame.mixer.music.load(resource_path(r"resourcegame_over.mp3"))
                 pygame.mixer.music.play()
             plot_snake(screen,DEEP_GREEN,snake_list,snake_size)
         # snake = pygame.draw.rect(screen,BLACK,[snake_x,snake_y,snake_size,snake_size])
@@ -201,7 +201,7 @@ def gameloop():
 def welcome_screen():
     exit_game = False
     while not exit_game:
-        pygame.mixer.music.load(resource_path(r"C:\Users\anike\OneDrive\Desktop\pygame\resource\start_sound.mp3"))
+        pygame.mixer.music.load(resource_path(r"resource\start_sound.mp3"))
         pygame.mixer.music.play()
         screen.fill(BLUE)
         pygame.draw.rect(screen, GREEN,[70,70,width-140,height-140])
